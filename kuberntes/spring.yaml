@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-deployment
+  template:
+    metadata:
+      labels:
+        app: spring-deployment
+    spec:
+      containers:
+        - image: jaksonsneider/spring-redis:v11
+          name: spring-deployment
+          ports:
+            - containerPort: 8081
+          resources:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-deployment
+spec:
+  selector:
+    app: spring-deployment
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

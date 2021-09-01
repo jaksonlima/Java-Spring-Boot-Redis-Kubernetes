@@ -1,0 +1,17 @@
+spring:
+  cache:
+    type: redis
+  redis:
+    host: redis-deployment.default.svc.cluster.local
+    port: 6379
+#    @Nota somente o nome do service redis
+#    host: redis-deployment
+
+#    @Nota Nome do service redis com namespace
+#    host: redis-deployment.<seu-namespace>
+
+#    @Nota Nome do service redis com namespace
+#    host: redis-deployment.<seu-namespace>.svc.cluster.local
+
+server:
+  port: 8081
